@@ -1,7 +1,7 @@
 # 🎙️ PAZHVAK: Persian Speech Recognition Dataset  
 **First Public Dataset for Persian Word-Level ASR**  
 
-🔗 **Dataset Link**: 
+🔗 **Dataset Link**:\
       👉 [PAZHVAK_DATASET](https://hormozgan.ac.ir/home/index/33/91/2164)  
       👉 [Kaggle PAZHVAK DATASET](https://www.kaggle.com/datasets/sepehrsimkhah/speech-dataset-pazhvak)
 
