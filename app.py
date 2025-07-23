@@ -17,6 +17,11 @@ MODEL_PATH = "pazhvak_hu\models\Best_Models"
 @st.cache_resource
 def load_model(model_name: str):
     model_info = torch.load(os.path.join(MODEL_PATH, model_name), map_location='cpu')
+    # Extract label classes
+    label_classes = model_info.get('label_classes', None)
+    if label_classes is None:
+        raise ValueError(f"Model file {model_name} does not contain 'label_classes'. Please re-save it with label information.")
+
     if isinstance(model_info, dict) and 'model_state_dict' in model_info:
         # Determine input_channels from model type
         if "cnn_light" in model_name or "cnn_heavy" in model_name or "crnn" in model_name:
@@ -51,11 +56,6 @@ def load_model(model_name: str):
         
     model.eval()  # Set to evaluation mode
     return model
-
-@st.cache_resource
-def load_labels():
-    df = pd.read_excel('assets/labels.xlsx')
-    return df
 
 # Initialize audio processor
 @st.cache_resource
@@ -131,8 +131,8 @@ if uploaded_file is not None:
         try:
             # Initialize processors
             audio_processor = get_audio_processor()
-            labels_df = load_labels()
-            model = load_model(model_config["model_name"])
+            model, labels_df = load_model(model_config["model_name"])
+
             
             # Preprocess and extract features
             features, audio = audio_processor.process_audio(
@@ -152,7 +152,7 @@ if uploaded_file is not None:
                         
             print(predicted_class)
             # Get label
-            label = labels_df[labels_df['Folder Number'] == predicted_class]['Persian Word'].values[0]
+            label = label_classes[predicted_class]
             
             # Display results
             with col2:
