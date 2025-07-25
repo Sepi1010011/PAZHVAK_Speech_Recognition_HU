@@ -11,7 +11,7 @@ from pazhvak_hu.models.pazhvak_cnn import CNNLight, CNNHeavy
 from pazhvak_hu.models.pazhvak_lstm import LSTMLight, LSTMHeavy
 from pazhvak_hu.models.pazhvak_crnn import CRNN
 
-MODEL_PATH = "pazhvak_hu\models\Best_Models"
+MODEL_PATH = os.path.join("pazhvak_hu", "models", "Best_Models")
 
 # Load model and labels (cache these for performance)
 @st.cache_resource
@@ -55,7 +55,7 @@ def load_model(model_name: str):
         model = model_info
         
     model.eval()  # Set to evaluation mode
-    return model
+    return model, label_classes
 
 # Initialize audio processor
 @st.cache_resource
@@ -131,7 +131,7 @@ if uploaded_file is not None:
         try:
             # Initialize processors
             audio_processor = get_audio_processor()
-            model, labels_df = load_model(model_config["model_name"])
+            model, label_classes = load_model(model_config["model_name"])
 
             
             # Preprocess and extract features
@@ -142,6 +142,7 @@ if uploaded_file is not None:
             
             # Convert to tensor
             features_tensor = torch.from_numpy(features).float()
+            features_tensor = features_tensor.unsqueeze(0)
             
             # Predict
             with torch.no_grad():
