@@ -149,9 +149,7 @@ if uploaded_file is not None:
                 outputs = model(features_tensor)
                 _, predicted = torch.max(outputs, 1)
                 predicted_class = predicted.item()
-            
                         
-            print(predicted_class)
             # Get label
             label = label_classes[predicted_class]
             
