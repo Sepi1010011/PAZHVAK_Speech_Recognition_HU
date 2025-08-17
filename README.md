@@ -5,7 +5,9 @@
       👉 [PAZHVAK_DATASET](https://hormozgan.ac.ir/home/index/33/91/2164)  
       👉 [Kaggle PAZHVAK DATASET](https://www.kaggle.com/datasets/sepehrsimkhah/speech-dataset-pazhvak)
 
-🔗 **Pretrained Model**: [Coming Soon]   
+🔗 **Best Model**: [CNN_Heavy]   
+
+🔗 **Kaggle Notebook**: [LINK](https://www.kaggle.com/code/sepehrsimkhah/pazhvak-speech-processing)   
 
 🔗 **Reports**: [Pazhvak Report](https://docs.google.com/document/d/1KPJshqiSijwDFyV6mfgFu7YValiibMfL1vfFDCjozjQ/edit?usp=sharing) 
 
