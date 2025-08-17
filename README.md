@@ -12,6 +12,11 @@
 🔗 **Reports**: [Pazhvak Report](https://docs.google.com/document/d/1KPJshqiSijwDFyV6mfgFu7YValiibMfL1vfFDCjozjQ/edit?usp=sharing) 
 
 
+App: 
+
+![App_demo](./assets/Demo.png)
+
+
 ## 🚀 Overview  
 Speech recognition is a critical task in voice technology, yet **low-resource languages like Persian lack high-quality datasets**. PAZHVAK is the **first public Persian word-level ASR dataset**, containing:  
 - 88,535 audio files  
